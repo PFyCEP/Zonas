@@ -1,0 +1,140 @@
+<!DOCTYPE html><html>
+<head>
+	<meta charset=utf-8 />
+	<title>PFyCEP</title>
+	<link rel="stylesheet" href="js/leaflet.css" />
+	<script src="js/leaflet.js"></script>
+	<script src="js/proj4-compressed.js"></script>
+    <script src="js/leaflet-color-markers.js"></script>
+    <script src="js/proj4leaflet.js"></script>
+    	
+	<style> 
+
+ 	 #map {
+  		 position: absolute;
+		 width: 100%;
+		 height: 100%; }
+
+ 	</style> 
+	
+</head>  
+<body>
+<div id ="map" style="margin-top: 15px"> </div>
+<script src="zona/C7.js" type="text/javascript"></script>
+<script src="equipamiento/contC7.js" type="text/javascript"></script>
+<script src="equipamiento/centrosC7.js" type="text/javascript"></script>
+<script src="equipamiento/islasC7.js" type="text/javascript"></script>
+<script>
+		
+		// Obtención del CRS EPSG:25830.
+        var crs = new L.Proj.CRS('EPSG:22185', '+proj=tmerc +lat_0=-90 +lon_0=-60 +k=1 +x_0=5500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', //http://spatialreference.org/ref/epsg/25830/proj4/
+            {
+                resolutions: [2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5],
+				//Origen de servicio tileado
+			origin: [0, 0]
+		//		origin:[0,0]
+            });
+		
+		var map = new L.map('map',
+            {
+                crs: crs,
+                minZoom: 0,
+                maxZoom: 12,
+                center: [-32.9370, -60.6715],
+                zoomSnap: 0.25,
+                zoom: 10
+            });
+
+        var layerRasterIgn = new L.tileLayer.wms("https://infomapa.rosario.gob.ar/wms/planobase?",
+            {	 layers:'distritos_descentralizados,rural_metropolitana,manzanas_metropolitana,limites_metropolitana,limite_municipio,sin_manzanas,manzanas,manzanas_no_regularizada,espacios_verdes,canteros,av_circunvalacion,avenidas_y_boulevares,sentidos_de_calle,via_ferroviaria,puentes,hidrografia,islas_del_parana,bancos_de_arena,autopistas,nombres_de_calles,numeracion_de_calles',
+                crs: crs,
+                format: 'image/jpeg', 
+						map_imagetype: 'jpeg',
+			            transparent: true,
+			            continuousWorld: true,
+			            showOnSelector: false,
+			            maxZoom: 23,
+		                minZoom: 0,
+		                attributions: '© Municipalidad de Rosario'
+            }).addTo(map);
+	
+var latlngs = [[-32.93217949, -60.66311861], [-32.93179878, -60.66502218], [-32.93260779, -60.66742543], [-32.93329784, -60.67051873], [-32.93348819, -60.67779988], [-32.93907993, -60.67915617], [-32.94153077, -60.66542668], [-32.94015068, -60.66509356], [-32.93988894, -60.66652124], [-32.93781881, -60.66602155], [-32.93808055, -60.66457008]];
+	
+var polygon = L.polygon(latlngs, {color: 'black', opacity: 1, weight: 3, fillOpacity: 0}).addTo(map);
+	
+	/* Base Maps */
+
+	function onEachFeature(feature, layer) {
+		var popupContent = feature.properties.popupContent;
+		layer.bindPopup(popupContent);
+	}
+
+/*var contenedores = L.geoJSON(conte, {
+
+		pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {icon: vIcon});
+		},
+		onEachFeature: onEachFeature
+	}).addTo(map);
+		
+var islas = L.geoJSON(isla, {
+
+		pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {icon: nIcon});
+		},
+
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+var centros = L.geoJSON(centro, {
+
+		pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {icon: cIcon});
+		},
+
+		onEachFeature: onEachFeature
+	}).addTo(map);*/
+		
+L.geoJSON([Comercio], {
+
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 12,
+				fillColor: "#222222",
+				color: "#000",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+	}).addTo(map);
+	
+L.geoJSON([Vecino], {
+
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 12,
+				fillColor: "#54F2FF",
+				color: "#000",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+	}).addTo(map); 
+	
+</script>
+</body>
+</html> 
