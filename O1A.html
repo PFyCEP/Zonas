@@ -1,7 +1,7 @@
 <!DOCTYPE html><html>
 <head>
 	<meta charset=utf-8 />
-	<title>PFyCEP   C6-B</title>
+	<title>PFyCEP   C9</title>
 	<link rel="stylesheet" href="js/leaflet.css" />
 	<link rel="stylesheet" href="fonts/museo-slab.css" />
 	<script src="js/leaflet.js"></script>
@@ -27,15 +27,15 @@
       <td width="100" class="leaflet-atexto">Comercio</td>
       <td width="30"><img src="images/vecino.png" width="12"/></td>
       <td width="100" class="leaflet-atexto">Vecino</td>
-      <td align="right" class="leaflet-atitulo"><strong>C6 B - Remedios de Escalada Este</strong></td>
+      <td align="right" class="leaflet-atitulo"><strong>O1 A - Cinco Esquinas</strong></td>
     </tr>
-  </tbody>
+   </tbody>
 </table>
 <div id ="map" style="margin-top: 15px"> </div>
-<script src="zona/C6B.js" type="text/javascript"></script>
-<script src="equipamiento/contC6B.js" type="text/javascript"></script>
-<script src="equipamiento/centrosC6B.js" type="text/javascript"></script>
-<script src="equipamiento/islasC6B.js" type="text/javascript"></script>
+<script src="zona/O1A.js" type="text/javascript"></script>
+<script src="equipamiento/contO1A.js" type="text/javascript"></script>
+<script src="equipamiento/centrosO1A.js" type="text/javascript"></script>
+<script src="equipamiento/islasO1A.js" type="text/javascript"></script>
 <script>
 		
 		// Obtención del CRS EPSG:25830.
@@ -52,7 +52,7 @@
                 crs: crs,
                 minZoom: 0,
                 maxZoom: 12,
-                center: [-32.9426, -60.6725],
+                center: [-32.956, -60.680],
                 zoomSnap: 0.25,
                 zoom: 10
             });
@@ -70,7 +70,7 @@
 		                attributions: '© Municipalidad de Rosario'
             }).addTo(map);
 	
-var latlngs = [[-32.9414831828, -60.665450478], [-32.9390323379, -60.679179968], [-32.9441957683, -60.680464877], [-32.9466942024, -60.6668067708]];
+var latlngs = [[-32.960292508, -60.684540238], [-32.961291882, -60.679019889], [-32.950846048, -60.676426276], [-32.949846675, -60.681922831]];
 var polygon = L.polygon(latlngs, {color: 'black', opacity: 1, weight: 3, fillOpacity: 0}).addTo(map);
 	
 	/* Base Maps */
