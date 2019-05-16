@@ -252,7 +252,7 @@
 
 /* general typography */
 .leaflet-container {
-	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font: 18px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 	}
 
 /* general toolbar styles */
@@ -322,7 +322,7 @@
 	font-size: 24px;
 	}
 .leaflet-atitulo {
-	font: bold 24px 'museo-slab', Monaco, monospace;
+	font: bold 26px 'museo-slab', Monaco, monospace;
 	text-indent: 1px;
 	}
 .leaflet-atitulo-out {
@@ -423,7 +423,7 @@
 	border-top: none;
 	line-height: 1.1;
 	padding: 2px 5px 1px;
-	font-size: 11px;
+	font-size: 14px;
 	white-space: nowrap;
 	overflow: hidden;
 	-moz-box-sizing: border-box;
