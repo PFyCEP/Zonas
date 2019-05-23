@@ -3,9 +3,6 @@ var Comercio = {
           "type": "FeatureCollection",
           "features": [
 
-       { "geometry": { "type": "Point", "coordinates": [ -60.65041564, -32.93935128] },
-                "type": "Feature", "properties": { "popupContent": "Tucumán 2066 " }, "id": 181},
-
        { "geometry": { "type": "Point", "coordinates": [ -60.62971374, -32.95412855] },
                 "type": "Feature", "properties": { "popupContent": "Alem Leandro N. 1271 " }, "id": 750},
 
@@ -27,17 +24,11 @@ var Comercio = {
        { "geometry": { "type": "Point", "coordinates": [ -60.64652876, -32.9550429] },
                 "type": "Feature", "properties": { "popupContent": "Montevideo 1518 " }, "id": 6124},
 
-       { "geometry": { "type": "Point", "coordinates": [ -60.63722489, -32.94444982] },
-                "type": "Feature", "properties": { "popupContent": "San Lorenzo 1063 " }, "id": 6396},
-       { "geometry": { "type": "Point", "coordinates": [ -60.6468175, -32.9425482] },
-                "type": "Feature", "properties": { "popupContent": "San Lorenzo 1757 " }, "id": 6421},
-
        { "geometry": { "type": "Point", "coordinates": [ -60.63568748, -32.945857] },
                 "type": "Feature", "properties": { "popupContent": "Santa Fe 942 " }, "id": 6458},
 
        { "geometry": { "type": "Point", "coordinates": [ -60.63506754, -32.95101825] },
                 "type": "Feature", "properties": { "popupContent": "San Juan 801 " }, "id": 7042},
-
        { "geometry": { "type": "Point", "coordinates": [ -60.63769282, -32.94919436] },
                 "type": "Feature", "properties": { "popupContent": "San Luis 1034 " }, "id": 7090},
 
@@ -46,9 +37,6 @@ var Comercio = {
 
        { "geometry": { "type": "Point", "coordinates": [ -60.64125076, -32.94777826] },
                 "type": "Feature", "properties": { "popupContent": "Ricardone 1269 " }, "id": 7097},
-
-       { "geometry": { "type": "Point", "coordinates": [ -60.64835766, -32.93586507] },
-                "type": "Feature", "properties": { "popupContent": "Moreno 81 " }, "id": 7345},
 
        { "geometry": { "type": "Point", "coordinates": [ -60.65107112, -32.95139352] },
                 "type": "Feature", "properties": { "popupContent": "Dorrego 1362 " }, "id": 7398},
@@ -59,13 +47,8 @@ var Comercio = {
        { "geometry": { "type": "Point", "coordinates": [ -60.65032391, -32.95487008] },
                 "type": "Feature", "properties": { "popupContent": "Italia 1639 " }, "id": 7457},
 
-       { "geometry": { "type": "Point", "coordinates": [ -60.64509636, -32.93895294] },
-                "type": "Feature", "properties": { "popupContent": "España 282 " }, "id": 7464},
        { "geometry": { "type": "Point", "coordinates": [ -60.64756984, -32.95457496] },
                 "type": "Feature", "properties": { "popupContent": "Presidente Roca 1568 " }, "id": 7637},
-
-       { "geometry": { "type": "Point", "coordinates": [ -60.64068036, -32.93867212] },
-                "type": "Feature", "properties": { "popupContent": "Corrientes 194 " }, "id": 7718},
 
        { "geometry": { "type": "Point", "coordinates": [ -60.6378218, -32.9410818] },
                 "type": "Feature", "properties": { "popupContent": "Pasaje Simeoni 1160 " }, "id": 7906},
@@ -78,12 +61,8 @@ var Comercio = {
 
        { "geometry": { "type": "Point", "coordinates": [ -60.63716013, -32.94911739] },
                 "type": "Feature", "properties": { "popupContent": "San Martín 983 " }, "id": 8035},
-
        { "geometry": { "type": "Point", "coordinates": [ -60.63024075, -32.95027875] },
                 "type": "Feature", "properties": { "popupContent": "Primero De Mayo 975 " }, "id": 8271},
-
-       { "geometry": { "type": "Point", "coordinates": [ -60.65068204, -32.94176136] },
-                "type": "Feature", "properties": { "popupContent": "San Lorenzo 2042 " }, "id": 10694},
 
        { "geometry": { "type": "Point", "coordinates": [ -60.63485544, -32.95722639] },
                 "type": "Feature", "properties": { "popupContent": "Montevideo 673 " }, "id": 11389},
