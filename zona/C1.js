@@ -45,5 +45,5 @@ var Comercio = {
                 "type": "Feature", "properties": { "popupContent": "Corrientes 1636 " }, "id": 11808},
 
        { "geometry": { "type": "Point", "coordinates": [ -60.64970784, -32.95163116] },
-                "type": "Feature", "properties": { "popupContent": "Italia 1352 " }, "id": 12040},
+                "type": "Feature", "properties": { "popupContent": "Italia 1352 " }, "id": 12040} ] };
 
