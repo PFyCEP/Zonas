@@ -1,0 +1,224 @@
+<!DOCTYPE html><html>
+<head>
+	<meta charset=utf-8 />
+	<title>PFyCEP</title>
+	<!--Leaflet 1.0.2-->
+	<link rel="stylesheet" href="js/leaflet.css" />
+	<link rel="stylesheet" href="css/museo-slab.css" />
+	<script src="js/leaflet.js"></script>
+	<!--Plugin Proj4Leaflet-->
+	<script src="js/proj4-compressed.js"></script>
+    <script src="js/leaflet-color-markers.js"></script>
+
+    <script src="js/proj4leaflet.js"></script>
+    	
+	<style> 
+
+ 	 #map {
+  		 position: absolute;
+		 width: 98%;
+		 height: 90%; }
+
+ 	</style> 
+	
+</head>  
+<body>
+<table width="99%" border="0">
+  <tbody>
+    <tr>
+      <td width="20"><img src="images/verde.png" width="13"/></td>
+      <td width="130" class="leaflet-atexto">Contenedor Verde</td>
+      <td width="20"><img src="images/naranja.png" width="11"/></td>
+      <td width="140" class="leaflet-atexto">Contenedor Naranja</td>
+      <td width="20"><img src="images/centros.png" width="11"/></td>
+      <td width="150" class="leaflet-atexto">Centro de Recepción</td>
+      <td align="right" class="leaflet-atitulo"><strong>Cantidad de Organicos</strong></td>
+    </tr>
+  </tbody>
+</table>
+<div id ="map" style="margin-top: 15px"> </div>
+<script src="zona/kilos.js" type="text/javascript"></script>
+<script src="equipamiento/contC2.js" type="text/javascript"></script>
+<script src="equipamiento/centrosC2.js" type="text/javascript"></script>
+<script src="equipamiento/islasC2.js" type="text/javascript"></script>
+<script>
+		
+		// Obtención del CRS EPSG:25830.
+        var crs = new L.Proj.CRS('EPSG:22185', '+proj=tmerc +lat_0=-90 +lon_0=-60 +k=1 +x_0=5500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', //http://spatialreference.org/ref/epsg/25830/proj4/
+            {
+                resolutions: [2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5],
+				//Origen de servicio tileado
+			origin: [0, 0]
+		//		origin:[0,0]
+            });
+		
+		var map = new L.map('map',
+            {
+                crs: crs,
+                minZoom: 0,
+                maxZoom: 12,
+                center: [-32.9375, -60.6576],
+                zoomSnap: 0.25,
+                zoom: 9.5
+            });
+
+        var layerRasterIgn = new L.tileLayer.wms("https://infomapa.rosario.gob.ar/wms/planobase?",
+            {	 layers:'distritos_descentralizados,rural_metropolitana,manzanas_metropolitana,limites_metropolitana,limite_municipio,sin_manzanas,manzanas,manzanas_no_regularizada,espacios_verdes,canteros,av_circunvalacion,avenidas_y_boulevares,sentidos_de_calle,via_ferroviaria,puentes,hidrografia,islas_del_parana,bancos_de_arena,autopistas,nombres_de_calles,numeracion_de_calles',
+                crs: crs,
+                format: 'image/jpeg', 
+						map_imagetype: 'jpeg',
+			            transparent: true,
+			            continuousWorld: true,
+			            showOnSelector: false,
+			            maxZoom: 23,
+		                minZoom: 0,
+		                attributions: '© Municipalidad de Rosario'
+            }).addTo(map);
+	
+	/* Base Maps */
+	
+	function onEachFeature(feature, layer) {
+		var popupContent = feature.properties.popupContent;
+		layer.bindPopup(popupContent);
+	}
+
+var contenedores = L.geoJSON(conte, {
+
+		pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {icon: vIcon});
+		},
+		onEachFeature: onEachFeature
+	}).addTo(map);
+		
+var islas = L.geoJSON(isla, {
+
+		pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {icon: nIcon});
+		},
+
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+var centros = L.geoJSON(centro, {
+
+		pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {icon: cIcon});
+		},
+
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+var n1 = L.geoJSON([nivel1], {
+
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+					stroke: true,
+					color: 'black',
+					weight: 1,
+					fillColor: "#ff3030",
+					fillOpacity: 1
+			});
+		}
+	}).addTo(map);
+
+	var n2 = L.geoJSON([nivel2], {
+
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				stroke: true,
+				color: 'black',
+				weight: 1,
+				fillColor: "#ff8800",
+				fillOpacity: 1
+			});
+		}
+	}).addTo(map);
+	
+var n3 = L.geoJSON([nivel3], {
+
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				stroke: true,
+				color: 'black',
+				weight: 1,
+				fillColor: "#ffe800",
+				fillOpacity: 1
+			});
+		}
+	}).addTo(map);
+	
+var n4 = L.geoJSON([nivel4], {
+
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				stroke: true,
+				color: 'black',
+				weight: 1,
+				fillColor: "#90ff48",
+				fillOpacity: 1
+			});
+		}
+	}).addTo(map);
+	
+	var n5 = L.geoJSON([nivel5], {
+
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				stroke: true,
+				color: 'black',
+				weight: 1,
+				fillColor: "#48ffca",
+				fillOpacity: 1
+			});
+		}
+	}).addTo(map);
+	
+	var overlayMaps = {
+"Hasta 499kg": n1,
+"Entre 500kg y 999kg": n2,
+"Entre 1000kg y 1499kg": n3,
+"Entre 1500kg y 1999kg": n4,
+"Mayor 2000kg": n5,
+
+};
+				
+L.control.layers(null, overlayMaps,{collapsed:false}).addTo(map);
+	
+</script>
+</body>
+</html> 
